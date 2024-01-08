@@ -1,0 +1,34 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import * as jwt_decode from 'jwt-decode';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  constructor(private http: HttpClient) { }
+
+
+  registerUser(first_name: string, last_name: string, email: string, password: string) {
+    return this.http.post('http://localhost:3000/api/users/create', { first_name, last_name, email, password })
+  }
+
+  login(email: string, password: string) {
+    return this.http.post('http://localhost:3000/api/users/login', { email, password });
+  }
+
+  updateUser(id: number, first_name: string, last_name: string, email: string, password: string) {
+    return this.http.put(`http://localhost:3000/api/users/${id}`, { first_name, last_name, email, password })
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(`http://localhost:3000/api/users/delete/${id}`, { responseType: 'text' })
+  }
+
+
+  isLoggedIn() {
+    const token = localStorage.getItem('token');
+    return token !== undefined && token !== null;
+  }
+}

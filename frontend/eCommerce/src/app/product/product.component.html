@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Products</a>
+        <button class="button" routerLink="/dashboard">Go Back</button>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let product of products">
+            <div class="card-sl">
+                <div class="card-image">
+                    <img src="https://www.igyaan.in/wp-content/uploads/2018/08/1iphones2-1200x675.jpg" />
+                </div>
+
+                <div class="card-heading">
+                    {{product.name}}
+                </div>
+                <div class="card-text">
+                    {{product.id}} </div>
+                <div class="card-text">
+                    {{product.description}} </div>
+                <div class="card-text col-md-6 d-flex">
+                    {{product.price | currency}}
+                    In Stock: {{product.quantity}}
+                </div>
+
+                <div class="button-group row">
+                    <div class="col-md-6">
+                        <a [routerLink]="['/edit-product', product.id]" class="card-button edit-button">Edit</a>
+                    </div>
+                    <div class="col-md-6">
+                        <a (click)="deleteProduct(product.id)" class="card-button delete-button">Delete</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

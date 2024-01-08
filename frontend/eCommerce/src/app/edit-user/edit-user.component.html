@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Update this User</a>
+        <button class="button" routerLink="/user">Go Back</button>
+    </div>
+</nav>
+
+<div class=" container">
+    <h2>Edit User</h2>
+
+    <form #editForm="ngForm">
+        <div class="form-group">
+            <label for="name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" [(ngModel)]="first_name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Last Name:</label>
+            <textarea id="last_name" name="last_name" [(ngModel)]="last_name" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Email:</label>
+            <input type="text" id="email" name="email" [(ngModel)]="email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Passowrd:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password" class="form-control">
+        </div>
+
+        <button type="submit" (click)="editUser()" class="btn btn-primary">Update User</button>
+    </form>
+</div>

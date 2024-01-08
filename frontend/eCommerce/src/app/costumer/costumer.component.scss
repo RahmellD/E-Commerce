@@ -1,0 +1,94 @@
+body {
+    font-family: 'Varela Round', sans-serif;
+    background: #f1f1f1;
+}
+
+.navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin-top: 2rem;
+}
+
+.card-sl {
+    width: 100%;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-action {
+    position: relative;
+    float: right;
+    margin-top: -1.25rem;
+    margin-right: 1rem;
+    z-index: 2;
+    color: #E26D5C;
+    background: #fff;
+    border-radius: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-action:hover {
+    color: #fff;
+    background: #E26D5C;
+}
+
+.card-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: #fff;
+    padding: 1rem 1.5rem;
+}
+
+.card-text,
+.cardtext {
+    padding: 1rem 1.5rem;
+    background: #fff;
+    font-size: 1rem;
+    color: #636262;
+}
+
+.cardtext {
+    text-align: end;
+}
+
+.card-button {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    width: 100%;
+    background-color: #1F487E;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.card-button:hover {
+    text-decoration: none;
+    background-color: #1D3461;
+}
+
+.button {
+    display: flex;
+    width: 80px;
+    background-color: #1F487E;
+    color: #fff;
+}
+
+.cart-button:hover {
+    cursor: pointer;
+}

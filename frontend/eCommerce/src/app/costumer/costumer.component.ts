@@ -10,7 +10,7 @@ export class CostumerComponent implements OnInit {
   products: any
 
   constructor(private productService: ProductService) { }
-  ngOnInit(): void {
+  ngOnInit() {
     this.getAllProducts();
   }
 

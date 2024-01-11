@@ -3,9 +3,62 @@ body {
     background: #f1f1f1;
 }
 
+// Variables
+$navbar-bg: #f8f9fa; // Background color
+$navbar-text: #343a40; // Text color
+$navbar-hover: #007bff; // Hover color for links
+
+// Navigation Bar Styles
+.navbar {
+    background-color: $navbar-bg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .navbar-brand {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 2rem;
+    margin-left: 2rem;
+    color: $navbar-text;
+    font-weight: bold;
+
+    &:hover,
+    &:focus {
+        color: $navbar-hover;
+    }
+}
+
+.navbar-toggler {
+    border-color: $navbar-text;
+}
+
+.nav-link {
+    color: $navbar-text;
+
+    &:hover,
+    &:focus {
+        color: $navbar-hover;
+    }
+}
+
+// Responsive Styles
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: $navbar-bg;
+    }
+
+    .navbar-nav {
+        margin-top: 10px;
+        text-align: center;
+
+        .nav-item {
+            margin: 0;
+
+            .nav-link {
+                padding: 10px;
+                display: block;
+                width: 100%;
+                border-bottom: 1px solid lighten($navbar-bg, 40%);
+            }
+        }
+    }
 }
 
 a {
@@ -13,7 +66,7 @@ a {
 }
 
 .container {
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 .card-sl {

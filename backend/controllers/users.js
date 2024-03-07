@@ -1,35 +1,26 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const jwt = require('jsonwebtoken')
-
+const bcrypt = require('bcrypt');
 
 
 const createUser = async (req, res) => {
     try {
-        const { first_name, last_name, email, password, role } = req.body;
-        if (role !== undefined && role === "Admin") {
-            const createAdminUser = await prisma.user.create({
-                data: {
-                    first_name,
-                    last_name,
-                    email,
-                    password,
-                    role
-                },
-            });
-            res.json(createAdminUser);
-        } else {
-            const createCustomerUser = await prisma.user.create({
-                data: {
-                    first_name,
-                    last_name,
-                    email,
-                    password,
-                    role: "User"
-                },
-            });
-            res.json(createCustomerUser);
-        }
+        const {first_name, last_name, email, password} = req.body
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+
+        const user = await prisma.user.create({
+            data:{
+                first_name,
+                last_name,
+                email,
+                password: hashedPassword
+            }
+        })
+
+        res.json(user)
+        
     } catch (error) {
         console.error(error);
         res.status(500).send("Internal server error!");
@@ -92,11 +83,10 @@ const login = async (req, res) => {
         const user = await prisma.user.findFirst({
             where: {
                 email,
-                password,
             },
         });
         if (user) {
-            delete user.password;
+            const validPass = await bcrypt.compare(password, user.password)
             const token = await jwt.sign(user, process.env.SECRET_KEY, {
                 expiresIn: '10m',
             });

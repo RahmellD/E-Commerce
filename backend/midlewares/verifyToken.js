@@ -9,11 +9,25 @@ const verifyToken = async (req, res, next) => {
         }
 
         const token = authorizationHeader.split(' ')[1];
-        const verify = jwt.verify(token, process.env.SECRET_KEY);
 
-        if (verify) {
-            req.user = verify;
+        // Decode the token to get user information
+        const decodedToken = jwt.decode(token, process.env.SECRET_KEY);
+
+        if (!decodedToken) {
+            return res.status(401).send('Invalid token');
+        }
+
+        // Optionally, check if the user has the necessary roles/permissions
+        const userRoles = decodedToken.role;
+
+        // Check if the user has the 'Admin' role
+        if (userRoles && userRoles.includes('Admin')) {
+            // User has 'Admin' role, continue to the next middleware
+            req.user = decodedToken;
             next();
+        } else {
+            // User does not have the required role
+            return res.status(403).send('Access forbidden. Insufficient permissions.');
         }
     } catch (error) {
         if (error instanceof jwt.JsonWebTokenError) {
@@ -24,5 +38,8 @@ const verifyToken = async (req, res, next) => {
         }
     }
 };
+
+module.exports = verifyToken;
+
 
 module.exports = verifyToken;

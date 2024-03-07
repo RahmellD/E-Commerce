@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,10 +17,12 @@ export class UserComponent implements OnInit {
   }
 
   showUsers() {
-    this.http.get('http://localhost:3000/api/users').subscribe((data) => {
-      this.users = data
-    })
+    this.authService.getUsers().subscribe((data) => {
+      this.users = data;
+      console.log(data);
+    });
   }
+
 
   deleteUser(id: number) {
     this.authService.deleteUser(id).subscribe(() => {

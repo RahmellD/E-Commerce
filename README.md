@@ -23,19 +23,34 @@ Follow the steps below to set up and run the project locally:
 
 1. Navigate to the `backend` folder.
 2. Install dependencies by running:
-    -npm install
-3. Run the server by using command
-     -npm run start
+    ```
+    npm install
+    ```
+3. Run the server by using command:
+    ```
+    npm run start
+    ```
+
 ### Frontend Setup:
+
 1. Navigate to the `frontend` folder.
-   -go to `eCommerce` file
-   -npm install
-2.  Run the application by using command
-     -npm run start
-    
+   - Go to `eCommerce` directory.
+   - Install dependencies by running:
+     ```
+     npm install
+     ```
+2. Run the application by using command:
+    ```
+    npm run start
+    ```
+
 ## Setup env file
+
 **Update example with your actual username, password, port, secret key**
+
+```dotenv
 DATABASE_URL="mysql://username:password@localhost:port/library"
-SECRET_KEY ="your-secret-key"
+SECRET_KEY ="your-secret-key" 
+
 
 
